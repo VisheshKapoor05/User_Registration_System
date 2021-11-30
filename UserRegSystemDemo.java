@@ -27,6 +27,9 @@ public class UserRegSystemDemo {
 		String phoneNumber = sc.nextLine();
 		validationService.validPhoneNumber(phoneNumber);
 		
+		System.out.println("Enter a password for this user: ");
+		String password = sc.nextLine();
+		validationService.validPassword(password);
 	}
 
 }

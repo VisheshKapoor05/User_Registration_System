@@ -31,6 +31,10 @@ public class UserValidationService {
 	private String PHONE_NUM_REGEX  = "^([0-9]{2})(\s){1}([0-9]{10})$";
 	
 	
+	// 8 or more characters
+	private String PASSWORD_REGEX   = "^[a-zA-Z]{8,}$";
+	
+	
 	public void validFirstName(String firstName) {
 		Pattern pattern = Pattern.compile(FIRST_NAME_REGEX);
 		Matcher matcher = pattern.matcher(firstName);
@@ -65,6 +69,15 @@ public class UserValidationService {
 			System.out.println("You've entered a valid phone number");
 		else
 			System.out.println("Please enter a valid phone number");
+	}
+	
+	public void validPassword(String password) {
+		Pattern pattern = Pattern.compile(PASSWORD_REGEX);
+		Matcher matcher = pattern.matcher(password);
+		if(matcher.matches())
+			System.out.println("You've entered a valid password");
+		else
+			System.out.println("Please enter a valid password");
 	}
 
 }
