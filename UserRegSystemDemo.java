@@ -10,7 +10,8 @@ public class UserRegSystemDemo {
 		System.out.println();
 		
 		UserValidationService validationService = new UserValidationService();
-
+		
+		/*
 		System.out.println("Enter first Name: ");
 		String firstName = sc.next();
 		validationService.validFirstName(firstName);
@@ -26,6 +27,7 @@ public class UserRegSystemDemo {
 		System.out.println("Enter a phone number: ");
 		String phoneNumber = sc.nextLine();
 		validationService.validPhoneNumber(phoneNumber);
+		*/
 		
 		System.out.println("Enter a password for this user: ");
 		String password = sc.nextLine();
