@@ -31,9 +31,12 @@ public class UserValidationService {
 	private String PHONE_NUM_REGEX  = "^([0-9]{2})(\s){1}([0-9]{10})$";
 	
 	
-	// 8 or more characters
-	private String PASSWORD_REGEX   = "^[a-zA-Z]{8,}$";
-	
+	/*
+	 * (?=.*[A-Z])    = at least one upper case
+	 * .{8,}          = 8 or more characters
+	 */
+	private String PASSWORD_REGEX   = "^(?=.*[A-Z]).{8,}$";
+
 	
 	public void validFirstName(String firstName) {
 		Pattern pattern = Pattern.compile(FIRST_NAME_REGEX);
