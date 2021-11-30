@@ -9,15 +9,20 @@ public class UserRegSystemDemo {
 		System.out.println("Welcome to the User Registration System");
 		System.out.println();
 		
-		System.out.println("Enter first Name: ");
+		UserValidationService validationService = new UserValidationService();
+
+		/*System.out.println("Enter first Name: ");
 		String firstName = sc.next();
+		validationService.validFirstName(firstName);
 		
 		System.out.println("Enter last Name: ");
 		String lastName = sc.next();
-		
-		UserValidationService validationService = new UserValidationService();
-		validationService.validFirstName(firstName);
 		validationService.validLastName(lastName);
+		*/
+		System.out.println("Enter an email address: ");
+		String emailAddress = sc.next();
+		validationService.validEmail(emailAddress);
+		
 	}
 
 }
