@@ -5,8 +5,10 @@ import java.util.regex.Pattern;
 
 public class UserValidationService {
 	
+	
 	// first letter SHOULD be cap, and total should be more than 3 letters
 	private String FIRST_NAME_REGEX = "^[A-Z]{1}[a-zA-Z]{2,}$";
+	
 	
 	// first letter SHOULD be cap, and total should be more than 3 letters
 	private String LAST_NAME_REGEX  = "^[A-Z]{1}[a-zA-Z]{2,}$";
@@ -23,6 +25,10 @@ public class UserValidationService {
 	 * ([a-z]{0,2})$  = a country code after . (in)
 	 */
 	private String EMAIL_REGEX      = "^([a-zA-Z0-9]+)(\\.)?([a-zA-Z0-9]+)(@[a-z]+)(\\.){1}([a-z]{2,3})(\\.)?([a-z]{0,2})$";
+	
+	
+	// 2 digit country code, a space, and then 10 digit phone number
+	private String PHONE_NUM_REGEX  = "^([0-9]{2})(\s){1}([0-9]{10})$";
 	
 	
 	public void validFirstName(String firstName) {
@@ -50,6 +56,15 @@ public class UserValidationService {
 			System.out.println("You've entered a valid email address");
 		else
 			System.out.println("Please enter a valid email address");
+	}
+	
+	public void validPhoneNumber(String phoneNumber) {
+		Pattern pattern = Pattern.compile(PHONE_NUM_REGEX);
+		Matcher matcher = pattern.matcher(phoneNumber);
+		if(matcher.matches())
+			System.out.println("You've entered a valid phone number");
+		else
+			System.out.println("Please enter a valid phone number");
 	}
 
 }
