@@ -33,9 +33,10 @@ public class UserValidationService {
 	
 	/*
 	 * (?=.*[A-Z])    = at least one upper case
+	 * (?=.*[0-9])    = at least one numeric number
 	 * .{8,}          = 8 or more characters
 	 */
-	private String PASSWORD_REGEX   = "^(?=.*[A-Z]).{8,}$";
+	private String PASSWORD_REGEX   = "^(?=.*[A-Z])(?=.*[0-9]).{8,}$";
 
 	
 	public void validFirstName(String firstName) {
