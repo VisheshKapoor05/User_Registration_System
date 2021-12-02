@@ -36,52 +36,62 @@ public class UserValidationService {
 	 * (?=.*[0-9])    = at least one numeric number
 	 * .{8,}          = 8 or more characters
 	 */
-	private String PASSWORD_REGEX   = "^(?=.*[A-Z])(?=.*[0-9])(?=[^_\\\\W]*[_\\\\W][^_\\\\W]*$).{8,}$";
+	private String PASSWORD_REGEX   = "^(?=.*[A-Z])(?=.*[0-9])(?=[^_\\W]*[_\\W][^_\\W]*$).{8,}$";
 
 	
-	public void validFirstName(String firstName) {
+	public boolean validFirstName(String firstName) {
 		Pattern pattern = Pattern.compile(FIRST_NAME_REGEX);
 		Matcher matcher = pattern.matcher(firstName);
-		if(matcher.matches())
+		/*if(matcher.matches())
 			System.out.println("You've entered a valid first name");
 		else
 			System.out.println("Please enter a valid first name");
+		*/
+		return matcher.matches(); 
 	}
 	
-	public void validLastName(String lastName) {
+	public boolean validLastName(String lastName) {
 		Pattern pattern = Pattern.compile(LAST_NAME_REGEX);
 		Matcher matcher = pattern.matcher(lastName);
 		if(matcher.matches())
 			System.out.println("You've entered a valid last name");
 		else
 			System.out.println("Please enter a valid last name");
+	
+		return matcher.matches();
 	}
 	
-	public void validEmail(String email) {
+	public boolean validEmail(String email) {
 		Pattern pattern = Pattern.compile(EMAIL_REGEX);
 		Matcher matcher = pattern.matcher(email);
 		if(matcher.matches())
 			System.out.println("You've entered a valid email address");
 		else
 			System.out.println("Please enter a valid email address");
+	
+		return matcher.matches();
 	}
 	
-	public void validPhoneNumber(String phoneNumber) {
+	public boolean validPhoneNumber(String phoneNumber) {
 		Pattern pattern = Pattern.compile(PHONE_NUM_REGEX);
 		Matcher matcher = pattern.matcher(phoneNumber);
 		if(matcher.matches())
 			System.out.println("You've entered a valid phone number");
 		else
 			System.out.println("Please enter a valid phone number");
+		
+		return matcher.matches();
 	}
 	
-	public void validPassword(String password) {
+	public boolean validPassword(String password) {
 		Pattern pattern = Pattern.compile(PASSWORD_REGEX);
 		Matcher matcher = pattern.matcher(password);
 		if(matcher.matches())
 			System.out.println("You've entered a valid password");
 		else
 			System.out.println("Please enter a valid password");
+		
+		return matcher.matches();
 	}
 
 }
