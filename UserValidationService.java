@@ -46,12 +46,10 @@ public class UserValidationService {
 		}
 		Pattern pattern = Pattern.compile(FIRST_NAME_REGEX);
 		Matcher matcher = pattern.matcher(firstName);
-	
 		if(matcher.matches())
 			System.out.println("You've entered a valid first name");
 		else
 			throw new UserValidationExceptions("Exception: Wrong first name format");
-	
 		
 		return matcher.matches();
 	}
@@ -81,7 +79,6 @@ public class UserValidationService {
 	public boolean validPhoneNumber(String phoneNumber) {
 		Pattern pattern = Pattern.compile(PHONE_NUM_REGEX);
 		Matcher matcher = pattern.matcher(phoneNumber);
-		System.out.println("number " +phoneNumber);
 		if(matcher.matches())
 			System.out.println("You've entered a valid phone number");
 		else
