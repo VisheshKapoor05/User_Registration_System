@@ -11,27 +11,33 @@ public class UserRegSystemDemo {
 		
 		UserValidationService validationService = new UserValidationService();
 		
-		/*
-		System.out.println("Enter first Name: ");
-		String firstName = sc.next();
-		validationService.validFirstName(firstName);
+		try {
+			System.out.println("Enter first Name: ");
+			String firstName = sc.next();
+			validationService.validFirstName(firstName);
+			
+			System.out.println("Enter last Name: ");
+			String lastName = sc.next();
+			validationService.validLastName(lastName);
+			
+			System.out.println("Enter an email address: ");
+			String emailAddress = sc.next();
+			validationService.validEmail(emailAddress);
+			/*
+			System.out.println("Enter a phone number: ");
+			String phoneNumber = sc.nextLine();
+			validationService.validPhoneNumber(phoneNumber);
+			*/
+			System.out.println("Enter a password for this user: ");
+			String password = sc.nextLine();
+			validationService.validPassword(password);
+			
+		}
+		catch(RuntimeException obj) {
+			obj.printStackTrace();
+		}
 		
-		System.out.println("Enter last Name: ");
-		String lastName = sc.next();
-		validationService.validLastName(lastName);
-		
-		System.out.println("Enter an email address: ");
-		String emailAddress = sc.next();
-		validationService.validEmail(emailAddress);
-		
-		System.out.println("Enter a phone number: ");
-		String phoneNumber = sc.nextLine();
-		validationService.validPhoneNumber(phoneNumber);
-		*/
-		
-		System.out.println("Enter a password for this user: ");
-		String password = sc.nextLine();
-		validationService.validPassword(password);
+		System.out.println("END");
 	}
 
 }
