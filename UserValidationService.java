@@ -39,15 +39,21 @@ public class UserValidationService {
 	private String PASSWORD_REGEX   = "^(?=.*[A-Z])(?=.*[0-9])(?=[^_\\W]*[_\\W][^_\\W]*$).{8,}$";
 
 	
-	public boolean validFirstName(String firstName) {
+	public boolean validFirstName(String firstName) throws RuntimeException{
+		
+		if(firstName == "" || firstName == null) {
+			throw new UserValidationExceptions();
+		}
 		Pattern pattern = Pattern.compile(FIRST_NAME_REGEX);
 		Matcher matcher = pattern.matcher(firstName);
-		/*if(matcher.matches())
+	
+		if(matcher.matches())
 			System.out.println("You've entered a valid first name");
 		else
-			System.out.println("Please enter a valid first name");
-		*/
-		return matcher.matches(); 
+			throw new UserValidationExceptions("Exception: Wrong first name format");
+	
+		
+		return matcher.matches();
 	}
 	
 	public boolean validLastName(String lastName) {
@@ -56,7 +62,7 @@ public class UserValidationService {
 		if(matcher.matches())
 			System.out.println("You've entered a valid last name");
 		else
-			System.out.println("Please enter a valid last name");
+			throw new UserValidationExceptions("Exception: Wrong last name format");
 	
 		return matcher.matches();
 	}
@@ -67,7 +73,7 @@ public class UserValidationService {
 		if(matcher.matches())
 			System.out.println("You've entered a valid email address");
 		else
-			System.out.println("Please enter a valid email address");
+			throw new UserValidationExceptions("Exception: Wrong email format");
 	
 		return matcher.matches();
 	}
@@ -75,10 +81,11 @@ public class UserValidationService {
 	public boolean validPhoneNumber(String phoneNumber) {
 		Pattern pattern = Pattern.compile(PHONE_NUM_REGEX);
 		Matcher matcher = pattern.matcher(phoneNumber);
+		System.out.println("number " +phoneNumber);
 		if(matcher.matches())
 			System.out.println("You've entered a valid phone number");
 		else
-			System.out.println("Please enter a valid phone number");
+			throw new UserValidationExceptions("Exception: Wrong Phone number format");
 		
 		return matcher.matches();
 	}
@@ -89,7 +96,7 @@ public class UserValidationService {
 		if(matcher.matches())
 			System.out.println("You've entered a valid password");
 		else
-			System.out.println("Please enter a valid password");
+			throw new UserValidationExceptions("Exception: Wrong Password format");
 		
 		return matcher.matches();
 	}
