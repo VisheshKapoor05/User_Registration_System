@@ -1,7 +1,14 @@
 package User_Registration_System;
 
+import java.lang.ref.PhantomReference;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import User_Registration_System.functional_Interfaces.EmailInterface;
+import User_Registration_System.functional_Interfaces.FirstNameInterface;
+import User_Registration_System.functional_Interfaces.LastNameInterface;
+import User_Registration_System.functional_Interfaces.PasswordInterface;
+import User_Registration_System.functional_Interfaces.PhoneNumberInterface;
 
 public class UserValidationService {
 	
@@ -40,62 +47,85 @@ public class UserValidationService {
 
 	
 	public boolean validFirstName(String firstName) throws RuntimeException{
+		FirstNameInterface obj = (firstNameVariable) ->
+		{
+			if(firstName == "" || firstName == null) {
+				throw new UserValidationExceptions();
+			}
+			Pattern pattern = Pattern.compile(FIRST_NAME_REGEX);
+			Matcher matcher = pattern.matcher(firstName);
+			if(matcher.matches())
+				System.out.println("You've entered a valid first name");
+			else
+				throw new UserValidationExceptions("Exception: Wrong first name format");
+			
+			return matcher.matches();
+		};
+		return obj.validFirstName(firstName);
 		
-		if(firstName == "" || firstName == null) {
-			throw new UserValidationExceptions();
-		}
-		Pattern pattern = Pattern.compile(FIRST_NAME_REGEX);
-		Matcher matcher = pattern.matcher(firstName);
-		if(matcher.matches())
-			System.out.println("You've entered a valid first name");
-		else
-			throw new UserValidationExceptions("Exception: Wrong first name format");
-		
-		return matcher.matches();
 	}
+	
 	
 	public boolean validLastName(String lastName) {
-		Pattern pattern = Pattern.compile(LAST_NAME_REGEX);
-		Matcher matcher = pattern.matcher(lastName);
-		if(matcher.matches())
-			System.out.println("You've entered a valid last name");
-		else
-			throw new UserValidationExceptions("Exception: Wrong last name format");
-	
-		return matcher.matches();
+		LastNameInterface obj = (lastNameVariable) ->
+		{
+			Pattern pattern = Pattern.compile(LAST_NAME_REGEX);
+			Matcher matcher = pattern.matcher(lastName);
+			if(matcher.matches())
+				System.out.println("You've entered a valid last name");
+			else
+				throw new UserValidationExceptions("Exception: Wrong last name format");
+		
+			return matcher.matches();
+		};
+		return obj.validLastName(lastName);
 	}
+		
 	
 	public boolean validEmail(String email) {
-		Pattern pattern = Pattern.compile(EMAIL_REGEX);
-		Matcher matcher = pattern.matcher(email);
-		if(matcher.matches())
-			System.out.println("You've entered a valid email address");
-		else
-			throw new UserValidationExceptions("Exception: Wrong email format");
-	
-		return matcher.matches();
+		EmailInterface obj = (emailVariable) ->
+		{
+			Pattern pattern = Pattern.compile(EMAIL_REGEX);
+			Matcher matcher = pattern.matcher(email);
+			if(matcher.matches())
+				System.out.println("You've entered a valid email address");
+			else
+				throw new UserValidationExceptions("Exception: Wrong email format");
+		
+			return matcher.matches();
+		};
+		return obj.validEmail(email);
 	}
 	
+	
 	public boolean validPhoneNumber(String phoneNumber) {
-		Pattern pattern = Pattern.compile(PHONE_NUM_REGEX);
-		Matcher matcher = pattern.matcher(phoneNumber);
-		if(matcher.matches())
-			System.out.println("You've entered a valid phone number");
-		else
-			throw new UserValidationExceptions("Exception: Wrong Phone number format");
-		
-		return matcher.matches();
+		PhoneNumberInterface obj = (phoneNumberVariable) ->
+		{
+			Pattern pattern = Pattern.compile(PHONE_NUM_REGEX);
+			Matcher matcher = pattern.matcher(phoneNumber);
+			if(matcher.matches())
+				System.out.println("You've entered a valid phone number");
+			else
+				throw new UserValidationExceptions("Exception: Wrong Phone number format");
+			
+			return matcher.matches();
+		};
+		return obj.validPhoneNumber(phoneNumber);
 	}
 	
 	public boolean validPassword(String password) {
-		Pattern pattern = Pattern.compile(PASSWORD_REGEX);
-		Matcher matcher = pattern.matcher(password);
-		if(matcher.matches())
-			System.out.println("You've entered a valid password");
-		else
-			throw new UserValidationExceptions("Exception: Wrong Password format");
-		
-		return matcher.matches();
+		PasswordInterface obj =(passwordVariable) ->
+		{
+			Pattern pattern = Pattern.compile(PASSWORD_REGEX);
+			Matcher matcher = pattern.matcher(password);
+			if(matcher.matches())
+				System.out.println("You've entered a valid password");
+			else
+				throw new UserValidationExceptions("Exception: Wrong Password format");
+			
+			return matcher.matches();
+		};
+		return obj.validPassword(password);
 	}
 
 }
